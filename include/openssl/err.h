@@ -368,6 +368,13 @@ OPENSSL_EXPORT void ERR_clear_system_error(void);
 #define OPENSSL_PUT_SYSTEM_ERROR() \
   ERR_put_error(ERR_LIB_SYS, 0, 0, __FILE__, __LINE__);
 
+#ifdef NDEBUG
+#undef OPENSSL_PUT_ERROR
+#define OPENSSL_PUT_ERROR(library, reason) (void)reason
+#undef OPENSSL_PUT_SYSTEM_ERROR
+#define OPENSSL_PUT_SYSTEM_ERROR()
+#endif
+
 // ERR_put_error adds an error to the error queue, dropping the least recent
 // error if necessary for space reasons.
 OPENSSL_EXPORT void ERR_put_error(int library, int unused, int reason,

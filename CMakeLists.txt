@@ -40,7 +40,7 @@ enable_language(CXX)
 include(CTest)
 include(GNUInstallDirs)
 
-set(INSTALL_ENABLED 1)
+# set(INSTALL_ENABLED 1)
 
 if(CMAKE_SYSTEM_NAME STREQUAL "Linux" AND NOT CMAKE_CROSSCOMPILING AND
    BUILD_TESTING)
@@ -767,8 +767,8 @@ if(FIPS)
   target_link_libraries(entropy_modulewrapper crypto)
 endif()
 
-add_executable(bssl ${BSSL_SOURCES})
-target_link_libraries(bssl ssl crypto)
+# add_executable(bssl ${BSSL_SOURCES})
+# target_link_libraries(bssl ssl crypto)
 
 if(BUILD_TESTING)
   add_executable(generate_mldsa_certs pki/testdata/verify_unittest/generate_mldsa_certs.cc)
